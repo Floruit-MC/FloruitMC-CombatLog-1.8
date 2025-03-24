@@ -1,0 +1,4 @@
+combat-timeout: 10000 # Tempo em milissegundos (10 segundos)
+combat-message: "§cVocê está em combate! Sair agora resultará em morte."
+command-blocked-message: "§cVocê não pode usar comandos em combate!"
+out-of-combat-message: "§aVocê não está mais em combate."

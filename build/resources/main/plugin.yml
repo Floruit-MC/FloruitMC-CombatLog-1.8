@@ -1,0 +1,3 @@
+name: FloruitCombatLog
+version: '1.0-SNAPSHOT'
+main: com.hanielcota.combatlog.CombatLogPlugin
