@@ -1,40 +1,64 @@
-# ⚔️ Floruit CombatLog - Sistema de Combate PvP
+---
 
-O plugin **CombatLog** da Floruit impede que jogadores abusem do logout em combate. Ele gerencia um **tempo de combate ativo**, bloqueando ações e exibindo avisos visuais e sonoros. Também inclui comandos administrativos para verificação de status e recarregamento da configuração.
+# ⚔️ Floruit CombatLog – Sistema Anti-Logout em PvP
+
+O **Floruit CombatLog** é um plugin projetado para evitar abusos no PvP, impedindo que jogadores desconectem para escapar de combates. Ele aplica um **tempo de combate ativo**, durante o qual certas ações são bloqueadas. O sistema também fornece feedback visual, sonoro e comandos administrativos para controle e monitoramento em tempo real.
 
 ---
 
-## 💬 Comandos
+## 💬 Comandos Disponíveis
 
-### 👀 Comandos Gerais
+### 👤 Comandos para Jogadores
 
-| Comando                               | Função                                                   | Permissão             |
-|--------------------------------------|----------------------------------------------------------|-----------------------|
-| `/combatlog`                         | Mostra a ajuda do comando                                | _Sem permissão_       |
-| `/combatlog status <jogador>`        | Mostra o tempo restante de combate de um jogador         | `combatlog.status`    |
+| Comando                       | Descrição                                         | Permissão          |
+| ----------------------------- | ------------------------------------------------- | ------------------ |
+| `/combatlog`                  | Exibe ajuda e informações básicas sobre o sistema | *Acesso livre*     |
+| `/combatlog status <jogador>` | Mostra o tempo restante de combate de um jogador  | `combatlog.status` |
 
-### 🛠️ Comandos de Staff
+### 🛠️ Comandos para Administradores
 
-| Comando                               | Função                                                   | Permissão             |
-|--------------------------------------|----------------------------------------------------------|-----------------------|
-| `/combatlog reload`                  | Recarrega o arquivo de configuração do plugin            | `combatlog.admin`     |
-
----
-
-## ⚙️ Como Funciona
-
-- Sempre que um jogador entra em combate, é adicionado a um **temporizador interno**.
-- O tempo de combate é controlado por `CombatManager` e definido via `CombatConfig`.
-- Ao tentar sair ou realizar ações específicas, jogadores com status de combate ativo poderão ser **bloqueados ou penalizados**, conforme configuração.
-- Staffs podem verificar o tempo restante de combate com `/combatlog status`.
+| Comando             | Descrição                                        | Permissão         |
+| ------------------- | ------------------------------------------------ | ----------------- |
+| `/combatlog reload` | Recarrega a configuração do plugin em tempo real | `combatlog.admin` |
 
 ---
 
-## ✅ Recursos
+## ⚙️ Funcionamento do Sistema
 
-- 📜 Sistema de verificação do status de combate em tempo real
-- 🔄 Comando para recarregar a configuração sem reiniciar o servidor
-- ⏳ Temporizador configurável
-- 🧠 Cache inteligente com `getIfPresent` para desempenho
+* 🔥 Ao entrar em combate, o jogador é automaticamente adicionado a um **temporizador de combate ativo**.
+* ⏱️ O tempo é controlado por um gerenciador interno (`CombatManager`) e configurado em `CombatConfig`.
+* 🚫 Durante esse tempo, ações como **sair do jogo, usar comandos, voar ou teleportar** podem ser **bloqueadas** ou **penalizadas**, conforme definido nas configurações.
+* 📊 A equipe do servidor pode verificar o status de combate dos jogadores usando `/combatlog status`.
 
 ---
+
+## ✅ Funcionalidades
+
+* ⏳ **Temporizador de combate configurável** (em segundos)
+* 🔔 **Alertas visuais e sonoros** durante o combate
+* 🔄 **Recarregamento dinâmico da configuração** via comando
+* 🧠 **Uso de cache inteligente** para melhor desempenho (`getIfPresent`)
+* 🔌 **Integração com plugins de permissão** como LuckPerms
+
+---
+
+## 📂 Arquivo de Configuração (`combatlog.yml`)
+
+> A configuração pode incluir:
+
+```yaml
+combat-time-seconds: 15
+block-commands-during-combat: true
+block-teleport: true
+send-actionbar: true
+play-sound-on-tag: true
+```
+
+---
+
+## 📌 Requisitos
+
+* Compatível com servidores **Paper 1.16+** ou superiores
+* Recomendado o uso com **LuckPerms** ou outro gerenciador de permissões
+* Ideal para servidores **Survival PvP**, **Factions**, **RPG** ou qualquer modo com combate entre jogadores
+
